@@ -1,1 +1,1 @@
-Dictionary-Circle
+Dictionary-Circle is a newspaper puzzle that aims to find a meaningful Turkish word by combination of some numbers' writing's first or last letter. The numbers arrayed in the form of a ring, letters can be chosen to clockwise or to counter-clockwise direction. I've tried to write an algorithm that figures out the meaningful word.
