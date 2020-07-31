@@ -15,4 +15,7 @@ public class CodeWood {
         reversedArray[array.length] = array[array.length-1];
         return reversedArray;
     }
+    public static boolean chance(){
+        return Math.random() < 0.5;
+    }
 }
