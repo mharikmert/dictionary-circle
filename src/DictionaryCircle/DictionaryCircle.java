@@ -32,6 +32,8 @@ public class DictionaryCircle {
             tail.next = head;
         }
     }
+    static char [] vowels = {'a','e','ı','i','o','ö','ü','u'};
+    static char [] consonants = {'b','c','ç','d','f','g','ğ','h','j','k','l','m','n','p','r','s','ş','t','v','y','z'};
     public static boolean randomBoolean() {
         return Math.random() < 0.5;
     }
@@ -44,9 +46,30 @@ public class DictionaryCircle {
         } while (current != head);
         System.out.println("\n");
     }
+    public static boolean isVowel(String str, int i){
+        for(char vowel : vowels)
+            if(str.charAt(i) == vowel)
+                return true;
+        return false;
+    }
+    public static boolean isConsonant(String str, int i){
+        for(char consonant : consonants)
+            if(str.charAt(i) == consonant)
+                return true;
+        return false;
+    }
+    public static boolean isTurkish(String str){
+        for(int i = 0; i< str.length(); i++){
+            if(isVowel(str,i)){
+                for(int j = i+1; j < str.length(); j++){
+                    if(isVowel(str,j)) return false;
+                }
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) {
-        char [] vowels = {'a','e','ı','i','o','ö','ü','u'};
-        for(int i = 0; i< 1000; i++){
+        for(int i = 0; i< 20; i++){
             String str = "", newStr = "";
             DictionaryCircle cl = new DictionaryCircle();
             //Adds data to the list clockwise
@@ -89,7 +112,8 @@ public class DictionaryCircle {
                     newStr += randomBoolean() ? str.charAt(0) : str.charAt(str.length()-1);
                 }
             }
-            System.out.println("word: " + newStr);
+            if(isTurkish(newStr))
+                System.out.println(newStr);
             // Write a turkish word validation method
         }
     }
