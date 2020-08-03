@@ -23,6 +23,8 @@ public class DictionaryCircle {
         }
     }
     static char [] vowels = {'a','e','ı','i','o','ö','ü','u'};
+    static char [] backs = {'a','ı','o','u'};
+    static char [] fronts = {'e','i','ö','ü'};
     static char [] consonants = {'b','c','ç','d','f','g','ğ','h','j','k','l','m','n','p','r','s','ş','t','v','y','z'};
     public static boolean randomBoolean() {
         return Math.random() < 0.5;
@@ -35,6 +37,15 @@ public class DictionaryCircle {
         } while (current != head);
         System.out.println("\n");
     }*/
+    /*
+    public static boolean backnessHarmony(String str){
+        for(int k = 0, i = 0; k < backs.length && i< str.length(); k++,i++) {
+            if(isVowel(str.charAt(i))){
+
+            }
+        }
+    }
+    */
     public static boolean isVowel(char ch){
         for(char vowel : vowels)
             if(ch == vowel)
@@ -53,14 +64,22 @@ public class DictionaryCircle {
                 return false;
         for(int i = 0; i< str.length()-2; i++)
             if(i == 0 && isConsonant(str.charAt(i)) && isConsonant(str.charAt(i+1)) ||
-            (isConsonant(str.charAt(i)) && isConsonant(str.charAt(i+1)) && isConsonant(str.charAt(i+2))) ||
-            (isConsonant(str.charAt(str.length()-2)) && isConsonant(str.charAt(str.length()-1))))
+            (isConsonant(str.charAt(i)) && isConsonant(str.charAt(i+1)) && isConsonant(str.charAt(i+2))))
                 return false;
-            /* it will be going to details of the turkish word rules*/
+        //never ends with 'b', 'c', 'd', 'g'
+        if (isConsonant(str.charAt(str.length()-2)) && isConsonant(str.charAt(str.length()-1)) ||
+                (str.charAt(str.length()-1) == 'b') || str.charAt(str.length()-1) == 'c' ||
+                str.charAt(str.length()-1) == 'd' || str.charAt(str.length()-1) == 'g')
+                //c, ğ, l, m, n, r, v, z
+            return false;
+        for(int i = 2; i < str.length(); i++)
+            if(str.charAt(i) == 'o' || str.charAt(i) == 'ö')
+                return false;
+        /* it will be going to details of the turkish word rules*/
         return true;
     }
     public static void main(String[] args) {
-        for(int i = 0; i< 10000; i++){
+        for(int i = 0; i< 100000; i++){
             String str = "";
             StringBuilder newStr = new StringBuilder();
             DictionaryCircle cl = new DictionaryCircle();
