@@ -70,16 +70,19 @@ public class DictionaryCircle {
         if (isConsonant(str.charAt(str.length()-2)) && isConsonant(str.charAt(str.length()-1)) ||
                 (str.charAt(str.length()-1) == 'b') || str.charAt(str.length()-1) == 'c' ||
                 str.charAt(str.length()-1) == 'd' || str.charAt(str.length()-1) == 'g')
-                //c, ğ, l, m, n, r, v, z
+            return false;
+        //c, f, ğ, h, j, l, m, n, p, r, ş, v, z
+        char f = str.charAt(0);
+        if( f == 'c'|| f == 'f' || f == 'ğ' || f == 'h' || f == 'l' || f == 'm' || f == 'n' || f == 'p'
+        || f == 'r' || f == 'ş' || f == 'v' || f == 'z' )
             return false;
         for(int i = 2; i < str.length(); i++)
             if(str.charAt(i) == 'o' || str.charAt(i) == 'ö')
                 return false;
-        /* it will be going to details of the turkish word rules*/
         return true;
     }
     public static void main(String[] args) {
-        for(int i = 0; i< 100000; i++){
+        for(int i = 0; i< 10000; i++){
             String str = "";
             StringBuilder newStr = new StringBuilder();
             DictionaryCircle cl = new DictionaryCircle();
