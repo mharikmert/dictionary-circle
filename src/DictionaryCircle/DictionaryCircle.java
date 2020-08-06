@@ -82,7 +82,7 @@ public class DictionaryCircle {
         return true;
     }
     public static void main(String[] args) {
-        for(int i = 0; i< 10000; i++){
+        for(int i = 0; i< 1000000; i++){
             String str = "";
             StringBuilder newStr = new StringBuilder();
             DictionaryCircle cl = new DictionaryCircle();
