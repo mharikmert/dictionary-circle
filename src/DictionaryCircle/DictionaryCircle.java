@@ -35,23 +35,6 @@ public class DictionaryCircle {
     public static boolean randomBoolean() {
         return Math.random() < 0.5;
     }
-    /*public static void print(Node head) {
-        Node current = head;
-        do {
-            System.out.print(" " + current.data);
-            current = current.next;
-        } while (current != head);
-        System.out.println("\n");
-    }*/
-    /*
-    public static boolean backneHarmony(String str){
-        for(int k = 0, i = 0; k < backs.length && i< str.length(); k++,i++) {
-            if(isVowel(str.charAt(i))){
-
-            }
-        }
-    }
-    */
     public static boolean isVowel(char ch){
         for(char vowel : vowels)
             if(ch == vowel)
