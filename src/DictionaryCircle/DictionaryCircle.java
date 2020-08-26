@@ -1,4 +1,10 @@
 package DictionaryCircle;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
+
 public class DictionaryCircle {
     public class Node {
         int data;
@@ -38,7 +44,7 @@ public class DictionaryCircle {
         System.out.println("\n");
     }*/
     /*
-    public static boolean backnessHarmony(String str){
+    public static boolean backneHarmony(String str){
         for(int k = 0, i = 0; k < backs.length && i< str.length(); k++,i++) {
             if(isVowel(str.charAt(i))){
 
@@ -58,7 +64,7 @@ public class DictionaryCircle {
                 return true;
         return false;
     }
-    public static boolean isTurkish(String str){
+    public static boolean isTurkish(StringBuilder str){
         for(int i = 0; i< str.length()-1; i++)
             if(isVowel(str.charAt(i)) && isVowel(str.charAt(i+1)))
                 return false;
@@ -81,8 +87,8 @@ public class DictionaryCircle {
                 return false;
         return true;
     }
-    public static void main(String[] args) {
-        for(int i = 0; i< 1000000; i++){
+    public static void main(String[] args) throws IOException {
+        for(int i = 0; i< 100000; i++){
             String str = "";
             StringBuilder newStr = new StringBuilder();
             DictionaryCircle cl = new DictionaryCircle();
@@ -121,8 +127,12 @@ public class DictionaryCircle {
                     str = number == 0 ? "sıfır" : units[number];
                 newStr.append(randomBoolean() ? str.charAt(0) : str.charAt(str.length() - 1));
             }
-            if(isTurkish(newStr.toString()))
-                System.out.println(newStr);
+            if(isTurkish(newStr)){
+                FileWriter fw  = new FileWriter("words.txt",true);
+                fw.write(String.valueOf(newStr));
+                fw.write("\n");
+                fw.close();
+            }
         }
     }
 }
