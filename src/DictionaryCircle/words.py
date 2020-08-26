@@ -4,7 +4,7 @@ obj = detector.TurkishNLP()
 obj.download()
 obj.create_word_set()
 
-file1 = open('words.txt', 'r')
+file1 = open('words.txt','r')
 Lines = file1.readlines()
 count = 0
 for line in Lines:
@@ -12,4 +12,3 @@ for line in Lines:
         file2 = open('turkishWords.txt','a')
         file2.write(line)
         count+= 1
-        # print("Line{}: {}".format(count, line.strip()))
